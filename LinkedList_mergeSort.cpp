@@ -53,6 +53,8 @@ void display(Node* head)
     cout<<"NULL"<<endl;
 }
 
+//Hare and tortoise algorithm for finding mid node
+
 Node* findMid(Node* &head)
 {
     Node* slow=head;
@@ -99,7 +101,9 @@ Node* LLmerge(Node* &first, Node* &second)
         }
         temp=temp->next;
     }
-
+    
+    //Merge remaining elements
+    
     if(first!=NULL) temp->next=first;
     else temp->next=second;
 
@@ -109,13 +113,13 @@ Node* LLmerge(Node* &first, Node* &second)
 Node* LLmergeSort(Node* &head)
 {
    if(head==NULL || head->next==NULL) return head;
-
-   Node* mid=findMid(head);
+    
+   Node* mid=findMid(head);    //Dividing linked list into two parts
    Node* left=head;
    Node* right=mid->next;
    mid->next=NULL;
 
-   left=LLmergeSort(left);
+   left=LLmergeSort(left);    //Recursive calling
    right=LLmergeSort(right);
 
    Node* ans=LLmerge(left,right);
@@ -126,7 +130,6 @@ int main()
 {
     Node* n=NULL;
     int s;
-
     cout<<"Enter size of list: ";
     cin>>s;
     for(int i=1; i<=s; i++)
@@ -136,13 +139,10 @@ int main()
         if(i==1) insertAtHead(n,x);
         else insertAtTail(n,x);
     }
-
     cout<<"Before sort, list: ";
     display(n);
-
     Node* ans=LLmergeSort(n);
     cout<<"Merged sorted list: ";
     display(ans);
-
     return 0;
 }
