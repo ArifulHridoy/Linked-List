@@ -20,37 +20,37 @@ public :
 
     Node(int v)
     {
-        data = v;
-        next = NULL;
+        data=v;
+        next=NULL;
     }
 
 };
 
 Node* insertAtTail(Node* &head, int x)
 {
-    Node* newNode = new Node(x);
-    Node* temp = head;
+    Node* newNode=new Node(x);
+    Node* temp=head;
     while(temp->next!=NULL)
     {
-        temp = temp->next;
+        temp=temp->next;
     }
-    temp->next = newNode;
+    temp->next=newNode;
     return head;
 }
 
 
 Node* insertAtHead(Node* &head, int x)
 {
-    Node* newNode = new Node(x);
-    newNode->next = head;
-    head = newNode;
+    Node* newNode=new Node(x);
+    newNode->next=head;
+    head=newNode;
     return head;
 }
 
 void deleteAtHead(Node* &head)
 {
-    Node* temp = head;
-    head = head->next;
+    Node* temp=head;
+    head=head->next;
     free(temp);
 }
 
